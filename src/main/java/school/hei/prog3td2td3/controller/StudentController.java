@@ -41,7 +41,7 @@ public class StudentController {
         }
 
         return ResponseEntity
-                .status(HttpStatus.UNSUPPORTED_MEDIA_TYPE) // 415
+                .status(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
                 .body("Format non supporté");
     }
 }
