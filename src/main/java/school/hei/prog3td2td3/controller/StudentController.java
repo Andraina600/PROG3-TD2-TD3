@@ -13,8 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-public class StudentController {
-    private static final Logger log = LoggerFactory.getLogger(StudentController.class);
+public class StudentController {;
     private final List<Student> students = new ArrayList<>();
 
     @GetMapping("/welcome")
@@ -30,22 +29,18 @@ public class StudentController {
     }
 
     @PostMapping("/students")
-    public ResponseEntity<String> addStudents(@RequestBody List<Student> newStudents) {
+    public ResponseEntity<List<Student>> addStudents(@RequestBody List<Student> newStudents) {
 
        try{
            students.addAll(newStudents);
 
-           String name = students.stream()
-                   .map(s -> s.getFirstName() + " " + s.getLastName())
-                   .collect(Collectors.joining(", "));
-
            return ResponseEntity
                    .status(HttpStatus.CREATED)
-                   .body(name);
+                   .body(students);
        }catch(Exception e){
            return ResponseEntity
                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                   .body("Erreur interne du serveur");
+                   .build();
        }
     }
 

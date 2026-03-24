@@ -1,0 +1,55 @@
+
+### ✅ 200 - Avec un name valide
+GET http://localhost:8080/welcome?name=Ben ah
+
+
+### ❌ 400 - Sans le paramètre name
+GET http://localhost:8080/welcome
+
+
+### ❌ 400 - Name vide
+GET http://localhost:8080/welcome?name=
+
+
+### ✅ 201 - Ajouter des étudiants
+POST http://localhost:8080/students
+Content-Type: application/json
+
+[
+  {"reference": "STD23001", "firstName": "Jean", "lastName": "Marc", "age": 22},
+  {"reference": "STD23002", "firstName": "Sedera", "lastName": "Metisse", "age": 20}
+]
+
+
+### ✅ 201 - Deuxième ajout (vérifie que la liste est cumulée)
+POST http://localhost:8080/students
+Content-Type: application/json
+
+[
+  {"reference": "STD23003", "firstName": "Sarobidy", "lastName": "Rabe", "age": 21}
+]
+
+
+### ❌ 500 - Body invalide (pas un tableau JSON)
+POST http://localhost:8080/students
+Content-Type: application/json
+
+{"reference": "STD23004", "firstName": "David", "lastName": "Noire", "age": 23}
+
+
+### ✅ 200 - Accept: text/plain → retourne les noms en texte
+GET http://localhost:8080/students
+Accept: text/plain
+
+### ✅ 200 - Accept: application/json → retourne les objets JSON
+GET http://localhost:8080/students
+Accept: application/json
+
+
+### ❌ 400 - Sans header Accept
+GET http://localhost:8080/students
+
+
+### ❌ 501 - Format non supporté
+GET http://localhost:8080/students
+Accept: application/xml
