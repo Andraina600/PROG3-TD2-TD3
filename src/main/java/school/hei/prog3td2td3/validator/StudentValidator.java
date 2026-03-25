@@ -1,10 +1,12 @@
 package school.hei.prog3td2td3.validator;
 
+import org.springframework.stereotype.Component;
 import school.hei.prog3td2td3.exception.BadRequestException;
 import school.hei.prog3td2td3.model.Student;
 
 import java.util.List;
 
+@Component
 public class StudentValidator {
     public void validate(List<Student> students) {
         for (Student s : students) {
