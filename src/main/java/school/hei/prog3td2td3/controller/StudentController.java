@@ -10,6 +10,7 @@ import school.hei.prog3td2td3.model.Student;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RestController
@@ -29,7 +30,7 @@ public class StudentController {;
     }
 
     @PostMapping("/students")
-    public ResponseEntity<List<Student>> addStudents(@RequestBody List<Student> newStudents) {
+    public ResponseEntity<Object> addStudents(@RequestBody List<Student> newStudents) {
 
        try{
            students.addAll(newStudents);
@@ -40,7 +41,7 @@ public class StudentController {;
        }catch(Exception e){
            return ResponseEntity
                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                   .build();
+                   .body("Erreur interne du serveur");
        }
     }
 
