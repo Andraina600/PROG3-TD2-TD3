@@ -54,7 +54,7 @@ public class StudentController {
 
     @GetMapping("/students")
     public ResponseEntity<?> getStudents(
-            @RequestHeader(value = "Accept", defaultValue = "text/plain") String accept) {
+            @RequestHeader(value = "Accept") String accept) {
         try {
             if (accept == null || accept.isEmpty()) {
                 return ResponseEntity

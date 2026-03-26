@@ -34,7 +34,7 @@ Content-Type: application/json
 POST http://localhost:8080/students
 Content-Type: application/json
 
-{"reference": "STD23004", "firstName": "David", "lastName": "Noire", "age": 23}
+{"reference": "STD23004", "firstName": "David", "lastName": "Noire  ", "age": 23}
 
 
 ### ✅ 200 - Accept: text/plain → retourne les noms en texte
