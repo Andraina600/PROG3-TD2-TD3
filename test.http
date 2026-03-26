@@ -26,7 +26,7 @@ POST http://localhost:8080/students
 Content-Type: application/json
 
 [
-  {"reference": "STD23003", "firstName": "Sarobidy", "lastName": "Rabe", "age": 21}
+  {"reference": null, "firstName": null, "lastName": "Rabe", "age": 21}
 ]
 
 
@@ -48,7 +48,7 @@ Accept: application/json
 
 ### ❌ 400 - Sans header Accept
 GET http://localhost:8080/students
-
+Accept:
 
 ### ❌ 501 - Format non supporté
 GET http://localhost:8080/students

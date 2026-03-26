@@ -9,16 +9,20 @@ import java.util.List;
 @Component
 public class StudentValidator {
     public void validate(List<Student> students) {
+        StringBuilder message = new StringBuilder();
         for (Student s : students) {
             if (s.getFirstName() == null || s.getFirstName().isBlank()) {
-                throw new BadRequestException("Le prénom est obligatoire");
+                message.append("Le prenom est obligatoire. ");
             }
             if (s.getLastName() == null || s.getLastName().isBlank()) {
-                throw new BadRequestException("Le nom est obligatoire");
+                message.append("Le nom est obligatoire. ");
             }
             if (s.getReference() == null || s.getReference().isBlank()) {
-                throw new BadRequestException("La référence est obligatoire");
+                message.append("La référence est obligatoire.");
             }
+        }
+        if(!message.isEmpty()){
+            throw new BadRequestException(message.toString());
         }
     }
 

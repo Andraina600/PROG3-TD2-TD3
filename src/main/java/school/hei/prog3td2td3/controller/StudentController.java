@@ -48,13 +48,14 @@ public class StudentController {
         } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Erreur interne du serveur");
+                    .body(e.getMessage());
         }
     }
 
     @GetMapping("/students")
     public ResponseEntity<?> getStudents(
-            @RequestHeader(value = "Accept") String accept) {
+            @RequestHeader(value = "Accept")
+            String accept) {
         try {
             if (accept == null || accept.isEmpty()) {
                 return ResponseEntity
