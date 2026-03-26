@@ -40,7 +40,7 @@ public class StudentController {
             studentService.addAll(newStudents);
             return ResponseEntity
                     .status(HttpStatus.CREATED)
-                    .body(studentService.getAll());  // 👈 remplace 'students' par le service
+                    .body(studentService.getAll());
         } catch (BadRequestException e) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
@@ -64,12 +64,12 @@ public class StudentController {
             if (accept.equals("text/plain")) {
                 return ResponseEntity
                         .status(HttpStatus.OK)
-                        .body(studentService.getAllAsString());  // 👈 délégué au service
+                        .body(studentService.getAllAsString());
             }
             if (accept.equals("application/json")) {
                 return ResponseEntity
                         .status(HttpStatus.OK)
-                        .body(studentService.getAll());  // 👈 délégué au service
+                        .body(studentService.getAll());
             }
             return ResponseEntity
                     .status(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
